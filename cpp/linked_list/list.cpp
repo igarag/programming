@@ -3,9 +3,3 @@
 
 using namespace std;
 
-
-
-main() /* Main program */
-{
-
-}
