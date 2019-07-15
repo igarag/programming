@@ -5,15 +5,20 @@
 
 using namespace std;
 
-
 // nombre_clase::constructor
 Node::Node(int _valor)
 {
     valor = _valor;
-    //next  = NULL;
+    next  = NULL;
 }
 
-void Node::get()
+void Node::print_list()
 {
-    cout << "HOLAAAA, soy un nodo" << endl;
+    cout << "\n\nLista enlazada:\n═══════════════" << endl;
+    cout << " ╔═══╗ ╔>" << endl;
+    cout << " ║ " << valor << " ║ ║" << endl;
+    cout << " ╠═══╣ ║" << endl;
+    cout << " ║ " << next << " ╠═╝" << endl;
+    cout << " ╚═══╝" << endl;
 }
+
