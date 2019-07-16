@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string>
 
+#include "node.h"
 
 // Lo que hace ifndef es no volver a instanciar esta clase
 // si ya lo ha hecho otra parte del programa.
@@ -13,14 +14,14 @@
 class List /* Clase Lista */
 {
     private:
-        int *p_inicio;
-        int *p_final;
+        Node* p_inicio;
+        Node* p_final;
+        int list_size;
+
 
     public: // Métodos
         // Constructor. Inicializa los atributos de la clase.
         List();
-
-        void insertar();
     
         void recorrer();
 
@@ -29,6 +30,8 @@ class List /* Clase Lista */
         void set(int a, int b);
 
         void insert(int valor_);
+
+        void print_list(int valor, int *next, int list_size);
 };
 
 #endif

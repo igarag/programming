@@ -10,7 +10,10 @@ using namespace std;
 
 class Node 
 {
-    private:
+    /* -------------------------------------- */
+    /* TODO: Cambiar la visibilidad a private */
+    /* -------------------------------------- */
+    public:
         int valor;
         int* next;
 
@@ -18,6 +21,7 @@ class Node
         /* Constructor */
         Node(int _valor);
 
-        void print_list();
+        int* get_address();
+
 };
 #endif

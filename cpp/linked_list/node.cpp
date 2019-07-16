@@ -10,15 +10,10 @@ Node::Node(int _valor)
 {
     valor = _valor;
     next  = NULL;
+   
 }
 
-void Node::print_list()
+int *Node::get_address()
 {
-    cout << "\n\nLista enlazada:\n═══════════════" << endl;
-    cout << " ╔═══╗ ╔>" << endl;
-    cout << " ║ " << valor << " ║ ║" << endl;
-    cout << " ╠═══╣ ║" << endl;
-    cout << " ║ " << next << " ╠═╝" << endl;
-    cout << " ╚═══╝" << endl;
+    return &valor;
 }
-
