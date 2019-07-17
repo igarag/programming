@@ -42,11 +42,13 @@ main() /* Main program */
     */
     
     /* Insertar un nodo */
-    my_list->insert(5);
+    my_list->insertEnd(5);
 
     for (int i = 0; i < 9; i++){
-        my_list->insert(i);
+        my_list->insertEnd(i);
     }
+
+    my_list->print_list();
 
     return 0;
 
