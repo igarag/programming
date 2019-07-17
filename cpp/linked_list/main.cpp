@@ -44,7 +44,9 @@ main() /* Main program */
     /* Insertar un nodo */
     my_list->insert(5);
 
-    my_list->insert(7);
+    for (int i = 0; i < 9; i++){
+        my_list->insert(i);
+    }
 
     return 0;
 

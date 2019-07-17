@@ -27,11 +27,11 @@ class List /* Clase Lista */
 
         void get();
     
-        void set(int a, int b);
+        void set(int , int);
 
-        void insert(int valor_);
+        void insert(int);
 
-        void print_list(int valor, int *next, int list_size);
+        void print_list();
 };
 
 #endif

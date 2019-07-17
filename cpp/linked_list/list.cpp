@@ -7,8 +7,9 @@ using namespace std;
 List::List()
 {
 
-    p_inicio = NULL;
-    p_final = p_inicio;
+    p_inicio  = NULL;
+    p_final   = NULL;
+    //p_final   = p_inicio;
     list_size = 0;
 
     cout << "\np_inicio: " << p_inicio << " - p_final: " << p_final << endl;
@@ -33,7 +34,6 @@ void List::recorrer()
 void List::get()
 {
     cout << "\nEstoy en get:" << endl;
-    //cout << "p_inicio es: " << &p_inicio << ". p_final es: " << &p_final << endl;
 }
 
 void List::insert(int valor_)
@@ -46,6 +46,7 @@ void List::insert(int valor_)
     if (list_size == 0){
         
         p_inicio = node;
+        p_final  = node;
 
         cout << "p_inicio en la primera vuelta es: " << p_inicio << endl;
         cout << "p_final en la primera vuelta es: " << p_final << endl;
@@ -55,36 +56,48 @@ void List::insert(int valor_)
 
         //recorrer();
     } else {
-
+        
+        p_final->next = node;
+        p_final = node;
+        
     }
+    cout << "Incrementando el contador de la lista: " << list_size << endl;
+
+    print_list();
+
     list_size += 1;
 
+    
 
-
-
-
-    List::print_list(node->valor, node->next, list_size);
-
-
-
-
-    //p_inicio apunta a....
-    //p_final = &p_inicio; 
-    //p_final apunta a....
 
 }
 
-void List::print_list(int valor, int* next, int list_size)
+void List::print_list()
 {
-    cout << " ╔════════════════╗ ╔>" << endl;
-    cout << " ║       " << valor << "        ║ ║" << endl;
-    cout << " ╠════════════════╣ ║" << endl;
-    if (list_size != 0){
-        cout << " ║       " << next << "        ╠═╝" << endl;
-    } else {
-        cout << " ║ " << next << " ╠═╝" << endl;
+
+    Node* element = p_inicio;
+    int i = 1;
+    cout << " \n\n  p_inicio\n     ║" << endl;
+    while (element->next != NULL)
+    {
+        
+        cout << " ╔═══╬════════════════╗" << endl;
+        cout << " ║ " << element->valor << " ║ " << element->next << " ║  <-- Elemento: " << i << endl;
+        cout << " ╚═══╩═══════╦════════╝" << endl;
+        if (list_size == 0)
+        {
+            cout << element->next << "             ╠═╝" << endl;
+        }
+        cout << "     ╔═══════╝" << endl;
+
+        element = element->next;
+        i += 1;
     }
-    cout << " ╚════════════════╝" << endl;
+    cout << " ╔═══╬════════════════╗" << endl;
+    cout << " ║ " << element->valor << " ║      NULL      ║  <-- Elemento: " << i << endl;
+        cout
+         << " ╚═══╩═══════╦════════╝\n             ║" << endl;
+    cout << "             ╚═════════╗\n                     ══╩══\n                      ═══\n                       ═" << endl;
 }
 
 /*

@@ -15,7 +15,7 @@ class Node
     /* -------------------------------------- */
     public:
         int valor;
-        int* next;
+        Node* next;
 
     public:
         /* Constructor */
