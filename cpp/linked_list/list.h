@@ -20,18 +20,23 @@ class List /* Clase Lista */
 
 
     public: // Métodos
-        // Constructor. Inicializa los atributos de la clase.
-        List();
-    
+
+        List(); // Constructor. Inicializa los atributos de la clase.
+
         void recorrer();
 
         void get();
     
         void set(int , int);
 
-        void insert(int);
+        void insertBegin(int);
+        void insertEnd(int);
+
+        void List::deleteBegin();
 
         void print_list();
+
+        Node get_list_position(int);
 };
 
 #endif

@@ -38,11 +38,9 @@ void List::insertEnd(int valor_)
     /* Crear un nodo */
     Node* node = new Node(valor_);
 
-    if (list_size == 0){
-
+    if (list_size == 0) {
         p_inicio = node;
         p_final  = node;
-
     } else {
         p_final->next = node;
         p_final = node;   
@@ -50,12 +48,40 @@ void List::insertEnd(int valor_)
     list_size += 1;
 }
 
+
+void List::insertBegin(int valor)
+{
+    /* Crear un nodo */
+    Node *node = new Node(valor);
+
+    if (list_size == 0) {
+        p_inicio = node;
+        p_final = node;
+    } else {
+        node->next = p_inicio;
+        p_inicio = node;
+        //p_final->next = node;
+        //p_final = node;
+    }
+    list_size += 1;
+}
+
+
+
+void List::deleteBegin()
+{
+    /* Buscar el primer elemento de la lista y asignar p_inicio al segundo */
+    p_inicio = node->next;
+}
+
+
 void List::print_list()
 {
-
     Node* element = p_inicio;
     int i = 1;
+
     cout << " \n\n  p_inicio\n     ║" << endl;
+
     while (element->next != NULL)
     {
         

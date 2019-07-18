@@ -27,13 +27,10 @@ main() /* Main program */
 
 
 
-
-
     /* Se crea la lista */
     List* my_list = new List();
 
     //my_list->recorrer();
-
 
     /*
     cout << "Inserte un número: " << endl;
@@ -42,14 +39,12 @@ main() /* Main program */
     */
     
     /* Insertar un nodo */
-    my_list->insertEnd(5);
-
     for (int i = 0; i < 9; i++){
-        my_list->insertEnd(i);
+        cout << "Insertando: " << i << endl;
+        my_list->insertBegin(i);
     }
 
     my_list->print_list();
 
     return 0;
-
 }

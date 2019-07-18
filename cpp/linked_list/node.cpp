@@ -1,6 +1,3 @@
-#include <iostream>
-#include <stdlib.h>
-
 #include "node.h"
 
 using namespace std;
@@ -9,8 +6,7 @@ using namespace std;
 Node::Node(int _valor)
 {
     valor = _valor;
-    next  = NULL;
-   
+    next  = NULL;  
 }
 
 int *Node::get_address()
