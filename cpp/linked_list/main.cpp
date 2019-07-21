@@ -46,5 +46,8 @@ main() /* Main program */
 
     my_list->print_list();
 
+    my_list->deleteBegin();
+    my_list->print_list();
+
     return 0;
 }

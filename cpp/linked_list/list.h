@@ -32,7 +32,8 @@ class List /* Clase Lista */
         void insertBegin(int);
         void insertEnd(int);
 
-        void List::deleteBegin();
+        void deleteBegin();
+        void deleteEnd();
 
         void print_list();
 

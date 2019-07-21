@@ -52,7 +52,7 @@ void List::insertEnd(int valor_)
 void List::insertBegin(int valor)
 {
     /* Crear un nodo */
-    Node *node = new Node(valor);
+    Node* node = new Node(valor);
 
     if (list_size == 0) {
         p_inicio = node;
@@ -71,7 +71,20 @@ void List::insertBegin(int valor)
 void List::deleteBegin()
 {
     /* Buscar el primer elemento de la lista y asignar p_inicio al segundo */
-    p_inicio = node->next;
+    Node* deleteElement = p_inicio;
+    p_inicio = p_inicio->next;
+    /* Liberar memoria */
+    free(deleteElement);
+}
+
+
+void List::deleteEnd()
+{
+    /* Buscar el primer elemento de la lista y asignar p_inicio al segundo */
+    Node *deleteElement = p_inicio;
+    p_inicio = p_inicio->next;
+    /* Liberar memoria */
+    free(deleteElement);
 }
 
 
