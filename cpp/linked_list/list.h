@@ -2,6 +2,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <string>
+#include <tuple>
 
 #include "node.h"
 
@@ -35,6 +36,9 @@ class List /* Clase Lista */
         void deleteBegin();
         void deleteEnd();
 
+        void insertPosition();
+
+        tuple<int, int> insertValuesInPosition();
         void print_list();
 
         Node get_list_position(int);

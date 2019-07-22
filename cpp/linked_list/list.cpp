@@ -70,9 +70,14 @@ void List::insertBegin(int valor)
 
 void List::deleteBegin()
 {
-    /* Buscar el primer elemento de la lista y asignar p_inicio al segundo */
+    /* Elimina el primer elemento de la lista y asigna p_inicio al segundo */
+
+    
     Node* deleteElement = p_inicio;
     p_inicio = p_inicio->next;
+
+    cout << "\n\n===================\nEliminando Nodo ...\n==================="
+         << endl;
     /* Liberar memoria */
     free(deleteElement);
 }
@@ -80,11 +85,82 @@ void List::deleteBegin()
 
 void List::deleteEnd()
 {
-    /* Buscar el primer elemento de la lista y asignar p_inicio al segundo */
-    Node *deleteElement = p_inicio;
-    p_inicio = p_inicio->next;
+    /* Elimina el último elemento de la lista y asigna p_inicio al segundo */
+
+    Node *node = p_inicio;
+    node = p_inicio->next;
+    Node *p_aux = NULL;
+
+    while (node->next != NULL)
+    {
+        p_aux = node;
+        node  = node->next;
+    }
+    p_aux->next = NULL;
+    p_final = p_aux;
+
+    cout << "\n\n================================" << endl;
+    cout << "Eliminando Nodo por el FINAL ..."<< endl;
+    cout << "================================" << endl;
+
     /* Liberar memoria */
-    free(deleteElement);
+    free(node);
+}
+
+
+void List::insertPosition()
+{
+    int value = 0;
+    int position = 0;
+
+    tie(value, position) = insertValuesInPosition();
+
+    cout << "Valor y posición de entrada: ";
+    cout << value << "|"  << position << endl;
+
+    Node *node = p_inicio;
+    Node *p_aux = NULL;
+
+    /* Insertar en la posición */
+    for (int i = 0; i <= position; i++)
+    {
+        if (node->next != NULL){
+            p_aux = node;
+            node = node->next;
+        } else if (node->next == NULL) {
+            break;
+        } else {
+            break;
+        }
+    }
+    node->valor = value;
+    node->next = p_aux->next;
+    
+    p_aux->next = node;
+    
+}
+
+
+
+
+/* ==================== */
+/* Funciones auxiliares */
+/* ==================== */
+tuple<int, int>List::insertValuesInPosition()
+{
+    /* Asks to the user a value and position to store in the list */
+    int value = 0;
+    int position = 0;
+
+    cout << "\nIntroduce el valor: ";
+    cin >> value;
+    cout << endl;
+
+    cout << "Introduce una posición: ";
+    cin >> position;
+    cout << endl;
+
+    return make_tuple(value, position);
 }
 
 

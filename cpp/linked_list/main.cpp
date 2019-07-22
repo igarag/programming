@@ -39,14 +39,16 @@ main() /* Main program */
     */
     
     /* Insertar un nodo */
-    for (int i = 0; i < 9; i++){
+    for (int i = 0; i < 5; i++){
         cout << "Insertando: " << i << endl;
-        my_list->insertBegin(i);
+        my_list->insertEnd(i);
     }
 
-    my_list->print_list();
+    my_list->insertPosition();
 
-    my_list->deleteBegin();
+    //my_list->deleteBegin();
+    //my_list->deleteEnd();
+
     my_list->print_list();
 
     return 0;
