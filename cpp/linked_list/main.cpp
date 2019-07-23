@@ -30,8 +30,6 @@ main() /* Main program */
     /* Se crea la lista */
     List* my_list = new List();
 
-    //my_list->recorrer();
-
     /*
     cout << "Inserte un número: " << endl;
     int valor_insertar;
@@ -40,16 +38,26 @@ main() /* Main program */
     
     /* Insertar un nodo */
     for (int i = 0; i < 5; i++){
-        cout << "Insertando: " << i << endl;
         my_list->insertEnd(i);
     }
 
-    my_list->insertPosition();
+    //my_list->insertPosition();
+
+    /*
+    cout << "Continuar? ";
+    string nombre;
+    cin >> nombre;
+     */
 
     //my_list->deleteBegin();
     //my_list->deleteEnd();
 
-    my_list->print_list();
+    my_list->print_simple_list();
+
+
+    my_list->deleteElement();
+
+    my_list->print_simple_list();
 
     return 0;
 }

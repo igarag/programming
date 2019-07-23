@@ -35,10 +35,13 @@ class List /* Clase Lista */
 
         void deleteBegin();
         void deleteEnd();
+        void deleteElement();
 
         void insertPosition();
 
-        tuple<int, int> insertValuesInPosition();
+        tuple<int, int> insertValueInPosition();
+        int deleteValueInPosition();
+        void print_simple_list();
         void print_list();
 
         Node get_list_position(int);
