@@ -11,8 +11,7 @@ List::List()
     p_inicio  = NULL;
     p_final   = NULL;
     list_size = 0;
-
-    cout << "\np_inicio: " << p_inicio << " - p_final: " << p_final << endl;
+    
 }
 
 
@@ -117,31 +116,22 @@ void List::deleteElement()
     int position = 0;
     position = deleteValueInPosition();
 
-    if (position == 0)
-    {
+    if (position == 0) {
         deleteBegin();
-    }
-    else if (position == list_size)
-    {
+    } else if (position == list_size) {
         deleteEnd();
-    }
-    else if (position > 0 && position < list_size)
-    {
-        /* TODO: Pasar por referencia p_current y p_prev para sacar
-        esto a una función */
-
-
-        /* Insertar en la posición */
+    } else if (position > 0 && position < list_size) {
+        /* Bucle en la función de findElement */
         for (int i = 0; i < position; i++)
         {
-            if (p_current->next != NULL)
-            {
+            if (p_current->next != NULL) {
                 p_prev = p_current;
                 p_current = p_current->next;
             } else {
                 break;
             }
         }
+        /* Insertar en la posición */
         p_prev->next = p_current->next;
         /* Incremento del número de elementos de la lista */
         list_size -= 1;
@@ -151,7 +141,7 @@ void List::deleteElement()
 }
 
 
-void List::insertPosition()
+void List::insertElement()
 {
     int value = 0;
     int position = 0;
@@ -205,6 +195,28 @@ void List::insertPosition()
 /* ==================== */ 
 /* Funciones auxiliares */
 /* ==================== */
+
+/*
+void List::findElement(Node **p_current, Node **p_prev, int position)
+{
+    cout << "BUSCANDO ELEMENTO . . . " << endl;
+    for (int i = 0; i < position; i++)
+    {
+        if (*p_current->next != NULL)
+        {
+            p_prev = p_current;
+            p_current = p_current->next;
+        }
+        else
+        {
+            break;
+        }
+    }
+}
+*/
+
+
+
 tuple<int, int>List::insertValueInPosition()
 {
     /* Asks to the user a value and position to store in the list */
@@ -281,10 +293,3 @@ void List::print_list()
          << " ╚═══╩═══════╦════════╝\n             ║" << endl;
         cout << "             ╚═════════╗\n\t\t     ══╩══\n\t\t      ═══\n\t\t       ═" << endl;
 }
-
-
-Node List::get_list_position(int valor_a_eliminar)
-{
-    cout << "Test" << endl;
-}
-
