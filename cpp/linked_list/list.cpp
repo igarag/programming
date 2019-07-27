@@ -7,28 +7,9 @@ using namespace std;
 /* Constructor */
 List::List()
 {
-
     p_inicio  = NULL;
     p_final   = NULL;
-    list_size = 0;
-    
-}
-
-
-void List::recorrer()
-{
-    Node* prev = p_inicio;
-    
-    while (prev->next != NULL)
-    {
-        cout << prev->valor << endl;
-    }    
-}
-
-
-void List::get()
-{
-    cout << "\nEstoy en get:" << endl;
+    list_size = 0;   
 }
 
 
@@ -63,6 +44,8 @@ void List::insertBegin(int valor)
         //p_final = node;
     }
     list_size += 1;
+    
+    cout << "\n\t -> ¡Valor insertado! <- \n" << endl;
 }
 
 
@@ -70,40 +53,86 @@ void List::insertBegin(int valor)
 void List::deleteBegin()
 {
     /* Elimina el primer elemento de la lista y asigna p_inicio al segundo */
+    cout << "\n\n=============================" << endl;
+    cout << "  Eliminando Nodo el principio ..." << endl;
+    cout << "=================================" << endl;
 
+    Node *p_current = p_inicio;
     
-    Node* deleteElement = p_inicio;
-    p_inicio = p_inicio->next;
+    list_size -= 1;
 
-    cout << "\n\n===================\nEliminando Nodo ...\n==================="
-         << endl;
+    if (list_size < 0){
+        
+        list_size += 1;
+
+    } else if (list_size == 0){
+
+        p_inicio = NULL;
+        p_final  = NULL;
+
+    } else if (list_size == 1){
+
+        p_inicio = p_final;
+        
+        p_inicio->next = NULL;
+        free(p_current);
+
+    } else if (list_size > 1) {
+
+        p_inicio = p_inicio->next;
+
+    }
     /* Liberar memoria */
-    free(deleteElement);
+    free(p_current);
 }
 
 
 void List::deleteEnd()
 {
     /* Elimina el último elemento de la lista y asigna p_inicio al segundo */
-
-    Node *node = p_inicio;
-    node = p_inicio->next;
-    Node *p_aux = NULL;
-
-    while (node->next != NULL)
-    {
-        p_aux = node;
-        node  = node->next;
-    }
-    p_aux->next = NULL;
-    p_final = p_aux;
-
     cout << "\n\n================================" << endl;
-    cout << "Eliminando Nodo por el FINAL ..."<< endl;
+    cout << "Eliminando Nodo del final ..." << endl;
     cout << "================================" << endl;
 
-    /* Liberar memoria */
-    free(node);
+    Node *p_current = p_inicio;
+    p_current = p_inicio->next;
+    Node *p_prev = NULL;
+
+    list_size -= 1;
+
+    if (list_size < 0) {
+
+        list_size += 1;
+
+    } else if (list_size == 0) {
+
+        p_inicio = NULL;
+        p_final = NULL;
+        free(p_current);
+        free(p_prev);
+    
+    } else if (list_size == 1) {
+
+        p_prev       = p_current;
+        p_prev->next = NULL;
+
+        free(p_current);
+        free(p_prev);
+        p_final = p_inicio;
+
+    } else if (list_size > 1) {
+
+        while (p_current->next != NULL)
+        {
+            p_prev    = p_current;
+            p_current = p_current->next;
+        }
+        p_prev->next = NULL;
+        p_final = p_prev;
+
+        /* Liberar memoria */
+        free(p_current);
+    }
 }
 
 
@@ -252,15 +281,25 @@ void List::print_simple_list()
     Node *element = p_inicio;
     int i = 1;
 
-    cout << "\nSimple list\n----------" << endl;
+    cout << "\nList Items ("<< list_size << ")" << "\n---------------" << endl;
 
-    while (element->next != NULL)
-    {
-        cout << element->valor << " -> ";
-        element = element->next;
-        i += 1;
+    if (list_size > 1){
+        
+        while (element->next != NULL)
+        {
+            cout << element->valor << " -> ";
+            element = element->next;
+            i += 1;
+        }
+        cout << element->valor << "\n" << endl;
+
+    } else if (list_size == 1) {
+
+        cout << element->valor << "\n" << endl;
+
+    } else if (list_size <= 0){
+        cout << "¡¡¡ Lista vacía !!!\n\n" << endl;
     }
-    cout << element->valor << "\n" << endl;
 }
 
 

@@ -24,10 +24,7 @@ class List /* Clase Lista */
 
         List(); // Constructor. Inicializa los atributos de la clase.
 
-        void recorrer();
 
-        void get();
-    
         void set(int , int);
 
         void insertBegin(int);
