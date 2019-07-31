@@ -1,6 +1,6 @@
 # Learning C++
 
-[TOC]
+Progresses and exercises carried out for the introduction to the C++ language.
 
 ## 1. Exercises
 
