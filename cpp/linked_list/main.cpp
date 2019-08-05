@@ -16,7 +16,7 @@ using namespace std;
 int program_menu(List *my_list, string lan)
 {
     if (lan == "es"){
-        cout << "==== SELECCIONE UNA OPCIÓN ===============================\n"
+        cout << "\n==== SELECCIONE UNA OPCIÓN ===============================\n"
             << endl;
         cout << "\t1: Insertar al principio." << endl;
         cout << "\t2: Insertar al final." << endl;
@@ -30,7 +30,7 @@ int program_menu(List *my_list, string lan)
         cout << "\t0: Salir." << endl;
         cout << "\n==========================================================" << endl;
     } else if (lan == "en") {
-        cout << "==== CHOOSE AN OPTION ====================================\n" << endl;
+        cout << "\n==== CHOOSE AN OPTION ====================================\n" << endl;
         cout << "\t1: Insert at the beginning." << endl;
         cout << "\t2: Insert at the end." << endl;
         cout << "\t3: Delete element at the beginning." << endl;

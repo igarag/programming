@@ -7,23 +7,23 @@ using namespace std;
 /* Constructor */
 List::List()
 {
-    p_inicio  = NULL;
-    p_final   = NULL;
+    p_start  = NULL;
+    p_end   = NULL;
     list_size = 0;   
 }
 
 
 void List::insertEnd(int valor_)
 {
-    /* Crear un nodo */
+    /* Creates a node */
     Node* node = new Node(valor_);
 
     if (list_size == 0) {
-        p_inicio = node;
-        p_final  = node;
+        p_start = node;
+        p_end  = node;
     } else {
-        p_final->next = node;
-        p_final = node;   
+        p_end->next = node;
+        p_end = node;   
     }
     list_size += 1;
 }
@@ -31,17 +31,17 @@ void List::insertEnd(int valor_)
 
 void List::insertBegin(int valor)
 {
-    /* Crear un nodo */
+    /* Creates a node */
     Node* node = new Node(valor);
 
     if (list_size == 0) {
-        p_inicio = node;
-        p_final = node;
+        p_start = node;
+        p_end = node;
     } else {
-        node->next = p_inicio;
-        p_inicio = node;
-        //p_final->next = node;
-        //p_final = node;
+        node->next = p_start;
+        p_start = node;
+        //p_end->next = node;
+        //p_end = node;
     }
     list_size += 1;
     
@@ -49,15 +49,13 @@ void List::insertBegin(int valor)
 }
 
 
-
 void List::deleteBegin()
 {
-    /* Elimina el primer elemento de la lista y asigna p_inicio al segundo */
-    cout << "\n\n=============================" << endl;
-    cout << "  Eliminando Nodo el principio ..." << endl;
-    cout << "=================================" << endl;
+    /* Deletes the first element of the list and assign p_start at the second one. */
+    cout << "\n\t --> Deleting node at the beginning ...\n\n\n"
+         << endl;
 
-    Node *p_current = p_inicio;
+    Node *p_current = p_start;
     
     list_size -= 1;
 
@@ -67,35 +65,31 @@ void List::deleteBegin()
 
     } else if (list_size == 0){
 
-        p_inicio = NULL;
-        p_final  = NULL;
+        p_start = NULL;
+        p_end  = NULL;
 
     } else if (list_size == 1){
 
-        p_inicio = p_final;
-        
-        p_inicio->next = NULL;
-        free(p_current);
+        p_start = p_end;        
+        p_start->next = NULL;
 
     } else if (list_size > 1) {
 
-        p_inicio = p_inicio->next;
+        p_start = p_start->next;
 
     }
-    /* Liberar memoria */
+    /* Free memory */
     free(p_current);
 }
 
 
 void List::deleteEnd()
 {
-    /* Elimina el último elemento de la lista y asigna p_inicio al segundo */
-    cout << "\n\n================================" << endl;
-    cout << "Eliminando Nodo del final ..." << endl;
-    cout << "================================" << endl;
+    /* Deletes the last element at the list and assign p_begin to the second one. */
+    cout << "\n\t --> Deleting node at the end ...\n\n\n" << endl;
 
-    Node *p_current = p_inicio;
-    p_current = p_inicio->next;
+    Node *p_current = p_start;
+    p_current = p_start->next;
     Node *p_prev = NULL;
 
     list_size -= 1;
@@ -103,22 +97,33 @@ void List::deleteEnd()
     if (list_size < 0) {
 
         list_size += 1;
+        free(p_prev);
 
     } else if (list_size == 0) {
 
-        p_inicio = NULL;
-        p_final = NULL;
-        free(p_current);
+        p_start = NULL;
+        p_end = NULL;
+
         free(p_prev);
     
     } else if (list_size == 1) {
 
-        p_prev       = p_current;
-        p_prev->next = NULL;
 
-        free(p_current);
+        /* TODO: Revisar */
+
+
+
+        //p_prev        = p_current;
+        //p_prev->next  = NULL;
+        p_current = p_start->next;
+        p_current = NULL;
+        p_start->next = NULL;
+
+
+
+
         free(p_prev);
-        p_final = p_inicio;
+        p_end = p_start;
 
     } else if (list_size > 1) {
 
@@ -128,18 +133,17 @@ void List::deleteEnd()
             p_current = p_current->next;
         }
         p_prev->next = NULL;
-        p_final = p_prev;
-
-        /* Liberar memoria */
-        free(p_current);
+        p_end = p_prev;
     }
+    /* Free memory */
+    free(p_current);
 }
 
 
 void List::deleteElement()
 {
     /* Punteros de búsqueda */
-    Node *p_current = p_inicio;
+    Node *p_current = p_start;
     Node *p_prev = NULL;
 
     int position = 0;
@@ -180,11 +184,11 @@ void List::insertElement()
     cout << "Valor y posición de entrada: ";
     cout << value << "|"  << position << endl;
 
-    /* Es necesario inicializarlo a algo != NULL, por ejemplo p_inicio */
+    /* Es necesario inicializarlo a algo != NULL, por ejemplo p_start */
     Node *new_node = new Node(value);
 
     /* Punteros de búsqueda */
-    Node *p_current = p_inicio;
+    Node *p_current = p_start;
     Node *p_prev = NULL;
 
     /* Si el valor a insertar es 0 o el tamaño de la lista, se 
@@ -278,10 +282,10 @@ int List::deleteValueInPosition()
 
 void List::print_simple_list()
 {
-    Node *element = p_inicio;
+    Node *element = p_start;
     int i = 1;
 
-    cout << "\nList Items ("<< list_size << ")" << "\n---------------" << endl;
+    cout << "List Items ("<< list_size << ")" << "\n---------------" << endl;
 
     if (list_size > 1){
         
@@ -298,17 +302,17 @@ void List::print_simple_list()
         cout << element->valor << "\n" << endl;
 
     } else if (list_size <= 0){
-        cout << "¡¡¡ Lista vacía !!!\n\n" << endl;
+        cout << "Empty list !!!\n\n" << endl;
     }
 }
 
 
 void List::print_list()
 {
-    Node* element = p_inicio;
+    Node* element = p_start;
     int i = 1;
 
-    cout << " \n\n  p_inicio\n     ║" << endl;
+    cout << " \n\n  p_start\n     ║" << endl;
 
     while (element->next != NULL)
     {

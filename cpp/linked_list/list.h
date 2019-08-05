@@ -15,8 +15,8 @@
 class List /* Clase Lista */
 {
     private:
-        Node* p_inicio;
-        Node* p_final;
+        Node* p_start;
+        Node* p_end;
         int list_size;
 
 
