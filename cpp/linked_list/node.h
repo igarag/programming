@@ -14,12 +14,12 @@ class Node
     /* TODO: Cambiar la visibilidad a private */
     /* -------------------------------------- */
     public:
-        int valor;
+        int value;
         Node* next;
 
     public:
         /* Constructor */
-        Node(int _valor);
+        Node(int _value);
 
         int* get_address();
 

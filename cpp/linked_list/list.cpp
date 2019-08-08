@@ -13,10 +13,10 @@ List::List()
 }
 
 
-void List::insertEnd(int valor_)
+void List::insertEnd(int value_)
 {
     /* Creates a node */
-    Node* node = new Node(valor_);
+    Node* node = new Node(value_);
 
     if (list_size == 0) {
         p_start = node;
@@ -29,10 +29,10 @@ void List::insertEnd(int valor_)
 }
 
 
-void List::insertBegin(int valor)
+void List::insertBegin(int value)
 {
     /* Creates a node */
-    Node* node = new Node(valor);
+    Node* node = new Node(value);
 
     if (list_size == 0) {
         p_start = node;
@@ -45,7 +45,7 @@ void List::insertBegin(int valor)
     }
     list_size += 1;
     
-    cout << "\n\t -> ¡Valor insertado! <- \n" << endl;
+    cout << "\n\t -> Value inserted! <- \n" << endl;
 }
 
 
@@ -89,7 +89,6 @@ void List::deleteEnd()
     cout << "\n\t --> Deleting node at the end ...\n\n\n" << endl;
 
     Node *p_current = p_start;
-    p_current = p_start->next;
     Node *p_prev = NULL;
 
     list_size -= 1;
@@ -97,36 +96,21 @@ void List::deleteEnd()
     if (list_size < 0) {
 
         list_size += 1;
-        free(p_prev);
 
     } else if (list_size == 0) {
 
         p_start = NULL;
         p_end = NULL;
-
-        free(p_prev);
     
     } else if (list_size == 1) {
 
-
-        /* TODO: Revisar */
-
-
-
-        //p_prev        = p_current;
-        //p_prev->next  = NULL;
         p_current = p_start->next;
         p_current = NULL;
         p_start->next = NULL;
-
-
-
-
-        free(p_prev);
         p_end = p_start;
 
     } else if (list_size > 1) {
-
+        p_current = p_start->next;
         while (p_current->next != NULL)
         {
             p_prev    = p_current;
@@ -136,6 +120,7 @@ void List::deleteEnd()
         p_end = p_prev;
     }
     /* Free memory */
+    //free(p_prev);
     free(p_current);
 }
 
@@ -181,7 +166,7 @@ void List::insertElement()
 
     tie(value, position) = insertValueInPosition();
 
-    cout << "Valor y posición de entrada: ";
+    cout << "Input value and position: ";
     cout << value << "|"  << position << endl;
 
     /* Es necesario inicializarlo a algo != NULL, por ejemplo p_start */
@@ -191,7 +176,7 @@ void List::insertElement()
     Node *p_current = p_start;
     Node *p_prev = NULL;
 
-    /* Si el valor a insertar es 0 o el tamaño de la lista, se 
+    /* Si el value a insertar es 0 o el tamaño de la lista, se 
     llama a los métodos creados anteriormente. */
     if ( position == 0) {
         insertBegin(value);
@@ -218,7 +203,7 @@ void List::insertElement()
         new_node->next = p_current;
 
     } else {
-        cout << "\n\tInvalid position value. It is greater than the list.\n" << endl;
+        cout << "\n>> Invalid position value. It is greater than the list. <<\n" << endl;
     }
 }
 
@@ -226,29 +211,8 @@ void List::insertElement()
 
 
 /* ==================== */ 
-/* Funciones auxiliares */
+/*    Aux Functions */
 /* ==================== */
-
-/*
-void List::findElement(Node **p_current, Node **p_prev, int position)
-{
-    cout << "BUSCANDO ELEMENTO . . . " << endl;
-    for (int i = 0; i < position; i++)
-    {
-        if (*p_current->next != NULL)
-        {
-            p_prev = p_current;
-            p_current = p_current->next;
-        }
-        else
-        {
-            break;
-        }
-    }
-}
-*/
-
-
 
 tuple<int, int>List::insertValueInPosition()
 {
@@ -256,13 +220,11 @@ tuple<int, int>List::insertValueInPosition()
     int value = 0;
     int position = 0;
 
-    cout << "\nIntroduce el valor: ";
+    cout << "\nType a value: ";
     cin >> value;
-    cout << endl;
 
-    cout << "Introduce una posición: ";
+    cout << "Type a position: ";
     cin >> position;
-    cout << endl;
 
     return make_tuple(value, position);
 }
@@ -273,36 +235,38 @@ int List::deleteValueInPosition()
     /* Asks to the user a position to delete in the list */
     int position = 0;
 
-    cout << "Introduce una posición: ";
+    cout << "Type a position: ";
     cin >> position;
     cout << endl;
 
     return position;
 }
 
+
 void List::print_simple_list()
 {
     Node *element = p_start;
     int i = 1;
 
-    cout << "List Items ("<< list_size << ")" << "\n---------------" << endl;
+    cout << "\n\nList Items (" << list_size << ")"
+         << "\n══════════════\n" << endl;
 
     if (list_size > 1){
         
         while (element->next != NULL)
         {
-            cout << element->valor << " -> ";
+            cout << element->value << " -> ";
             element = element->next;
             i += 1;
         }
-        cout << element->valor << "\n" << endl;
+        cout << element->value << "\n" << endl;
 
     } else if (list_size == 1) {
 
-        cout << element->valor << "\n" << endl;
+        cout << element->value << "\n" << endl;
 
     } else if (list_size <= 0){
-        cout << "Empty list !!!\n\n" << endl;
+        cout << "Empty list!!!\n\n" << endl;
     }
 }
 
@@ -318,7 +282,7 @@ void List::print_list()
     {
         
         cout << " ╔═══╬════════════════╗" << endl;
-        cout << " ║ " << element->valor << " ║ " << element->next 
+        cout << " ║ " << element->value << " ║ " << element->next 
              << " ║  <-- Elemento: " << i << endl;
         cout << " ╚═══╩═══════╦════════╝" << endl;
         if (list_size == 0)
@@ -331,7 +295,7 @@ void List::print_list()
         i += 1;
     }
     cout << " ╔═══╬════════════════╗" << endl;
-    cout << " ║ " << element->valor << " ║      NULL      ║  <-- Elemento: " << i << endl;
+    cout << " ║ " << element->value << " ║      NULL      ║  <-- Elemento: " << i << endl;
         cout
          << " ╚═══╩═══════╦════════╝\n             ║" << endl;
         cout << "             ╚═════════╗\n\t\t     ══╩══\n\t\t      ═══\n\t\t       ═" << endl;
