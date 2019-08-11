@@ -1,4 +1,10 @@
-from ventana_ui import *
+# -*- coding: utf-8 -*-
+
+import sys
+sys.path.insert(1, './user_interface')
+
+from opencv_interface import *
+
 
 # Herencia del Widget QMainWindow de PyQT.
 class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
@@ -6,16 +12,18 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         QtWidgets.QMainWindow.__init__(self, *args, **kwargs)
         self.setupUi(self)
 
-        self.label.setText("Click on button")
-        self.pushButton.setText("Click me")
+
+        # Con esto se puede cambiar el texto a las etiquetas
+        #self.label.setText("Click on button")
+        #self.run.setText("Click me")
 
 		# Conectamos los eventos con sus acciones
-        self.pushButton.clicked.connect(self.actualizar)
+        self.run.clicked.connect(self.actualizar)
 
 
 
     def actualizar(self):
-        self.label.setText("¡Acabas de hacer clic en el botón!")
+        self.input_label.setText("HEEYY YOU CLICKED ON RUN!!!!")
 
 
 if __name__ == "__main__":
