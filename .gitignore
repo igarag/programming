@@ -2,3 +2,6 @@
 *.o
 
 .ipynb_checkpoints
+
+.pkl
+.yml
