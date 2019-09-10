@@ -1,0 +1,1 @@
+Esto es una prueba de texto en español para ver si la librería SpaCy es capaz de sacar los verbos y sustantivos.
