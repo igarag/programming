@@ -6,12 +6,13 @@
 
 using namespace std;
 
-//     __ _     _                     _                    _
-//    / /(_)___| |_ __ _    ___ _ __ | | __ _ ______ _  __| | __ _
-//   / / | / __| __/ _` |  / _ \ '_ \| |/ _` |_  / _` |/ _` |/ _` |
-//  / /__| \__ \ || (_| | |  __/ | | | | (_| |/ / (_| | (_| | (_| |
-//  \____/_|___/\__\__,_|  \___|_| |_|_|\__,_/___\__,_|\__,_|\__,_|
-//
+// _     _       _            _   _     _     _   
+//| |   (_)     | |          | | | |   (_)   | |  
+//| |    _ _ __ | | _____  __| | | |    _ ___| |_ 
+//| |   | | '_ \| |/ / _ \/ _` | | |   | / __| __|
+//| |___| | | | |   <  __/ (_| | | |___| \__ \ |_ 
+//\_____/_|_| |_|_|\_\___|\__,_| \_____/_|___/\__|
+
 
 int program_menu(List *my_list)
 {
@@ -83,26 +84,24 @@ int program_menu(List *my_list)
 
 main() /* Main program */
 {
-    // PROGRAM MENU
-    cout << "  _     _       _            _   _     _     _   " << endl;
-    cout << " | |   (_)_ __ | | _____  __| | | |   (_)___| |_ " << endl;
-    cout << " | |   | | '_ \\| |/ / _ \\/ _` | | |   | / __| __|" << endl;
-    cout << " | |___| | | | |   <  __/ (_| | | |___| \\__ \\ |_ " << endl;
-    cout << " |_____|_|_| |_|_|\\_\\___|\\__,_| |_____|_|___/\\__|" << endl;
-    cout << "" << endl;
+    cout << " _     _       _            _   _     _     _   " << endl;
+    cout << "| |   (_)     | |          | | | |   (_)   | |  " << endl;
+    cout << "| |    _ _ __ | | _____  __| | | |    _ ___| |_ " << endl;
+    cout << "| |   | | '_ \\| |/ / _ \\/ _` | | |   | / __| __|" << endl;
+    cout << "| |___| | | | |   <  __/ (_| | | |___| \\__ \\ |_ " << endl;
+    cout << "\\_____/_|_| |_|_|\\_\\___|\\__,_| \\_____/_|___/\\__|\n" << endl;
 
-    cout << "\n==== CHOOSE AN OPTION ====================================\n"
-         << endl;
-    cout << "\t1: Insert at the beginning." << endl;
-    cout << "\t2: Insert at the end." << endl;
-    cout << "\t3: Delete element at the beginning." << endl;
-    cout << "\t4: Delete element at the end." << endl;
-    cout << "\t5: Insert in position" << endl;
-    cout << "\t6: Delete in position." << endl;
-    cout << "\t7: Print List." << endl;
-    cout << "\t8: Insert random numbers in the list." << endl;
-    cout << "\t0: Exit." << endl;
-    cout << "\n==========================================================" << endl;
+    cout << "╔═══ PROGRAM MENU ══════════════════════════════╗" << endl;
+    cout << "║      1: Insert at the beginning.              ║" << endl;
+    cout << "║      2: Insert at the end.                    ║" << endl;
+    cout << "║      3: Delete element at the beginning.      ║" << endl;
+    cout << "║      4: Delete element at the end.            ║" << endl;
+    cout << "║      5: Insert in position                    ║" << endl;
+    cout << "║      6: Delete in position.                   ║" << endl;
+    cout << "║      7: Print List.                           ║" << endl;
+    cout << "║      8: Insert random numbers in the list.    ║" << endl;
+    cout << "║      0: Exit.                                 ║" << endl;
+    cout << "╚═══════════════════════════════════════════════╝" << endl;
 
 
     /* The empty list is created */

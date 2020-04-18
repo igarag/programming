@@ -1,3 +1,6 @@
+// Lo que hace ifndef es no volver a instanciar esta clase
+// si ya lo ha hecho otra parte del programa.
+#ifndef LIST_H
 
 #include <iostream>
 #include <stdlib.h>
@@ -6,10 +9,9 @@
 
 #include "node.h"
 
-// Lo que hace ifndef es no volver a instanciar esta clase
-// si ya lo ha hecho otra parte del programa.
-#ifndef LIST_H
 #define LIST_H
+
+#endif
 
 
 class List /* Clase Lista */
