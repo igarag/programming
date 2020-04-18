@@ -1,4 +1,6 @@
-import node
+import random
+
+from node import Node
 
 
 class LinkedList:
@@ -8,8 +10,10 @@ class LinkedList:
         self.end = None
         self.list_size = 0
     
+
     def __str__(self):
         return hex(id(self.head))
+
 
     def print_simple_list(self):
         
@@ -25,6 +29,8 @@ class LinkedList:
                 node = node.next
             else:
                 print(node.value)
+        print("\n")
+
     
     def print_detailed_list(self):
         
@@ -74,15 +80,19 @@ class LinkedList:
         current_node = self.head
         prev_node = None
         
-        current_pos = 0
-        while current_pos != target_pos:
-            prev_node = current_node
-            current_node = current_node.next
-            
-            current_pos += 1
+        if target_pos > self.list_size:
+            print("ERROR!!!: The position is higher than the list size.")
+            pass
         else:
-            new_node.next = current_node
-            prev_node.next = new_node
+            current_pos = 0
+            while current_pos != target_pos:
+                prev_node = current_node
+                current_node = current_node.next
+                
+                current_pos += 1
+            else:
+                new_node.next = current_node
+                prev_node.next = new_node
             
         self.list_size += 1
         
@@ -126,3 +136,9 @@ class LinkedList:
             
         self.list_size -= 1
         
+
+    def insert_random_values(self, number_values):
+
+        for i in range(number_values):
+            values = random.randint(1, 100)
+            self.insert_begin(values)
