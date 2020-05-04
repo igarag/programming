@@ -17,7 +17,6 @@ def create_random_grid(N):
     """
     Returns a grid of NxN random values with a probability
     """
-    values = [ON, OFF]
     return np.random.choice(values, N*N, p=[0.2, 0.8]).reshape(N, N)
 
 
@@ -79,15 +78,18 @@ def create_glider_gun(i, j, grid):
 
 
 def update(frame_num, mat, grid, N):
-    
+    """
+    Function to create the matrix and draw
+    """
+
     new_grid = np.copy(grid)
     #print("grid size:", grid.shape)
     for i in range(1, grid.shape[0]-1):
         for j in range(1, grid.shape[1]-1):
-            neighbors = grid[i-1, j] + grid[i+1, j] + \
+            neighbors = int(grid[i-1, j] + grid[i+1, j] + \
                         grid[i, j+1] + grid[i, j-1] + \
                         grid[i-1,j-1] + grid[i+1,j+1] + \
-                        grid[i+1,j-1] + grid[i-1,j+1]
+                        grid[i+1,j-1] + grid[i-1,j+1])
             if grid[i, j] == ON:
                 if not (2 <= neighbors <= 3):
                     new_grid[i, j] = OFF
@@ -97,12 +99,10 @@ def update(frame_num, mat, grid, N):
             else:
                 new_grid[i, j] = OFF
 
-
     ### Update new grid
     mat.set_data(new_grid)
-    grid = new_grid
-    time.sleep(0.5)
-    return grid
+    grid[:] = new_grid[:] # Brackets are important
+    return mat
 
 
 def main():
@@ -118,7 +118,7 @@ def main():
     print(menu)
     grid_option = int(input("Select an option: "))
 
-    grid = np.zeros([])
+    grid = np.array([])
 
     if grid_option == 1:
         print("\nLoop pattern selected\n")
@@ -138,9 +138,9 @@ def main():
 
     ### Animation
     fig, ax = plt.subplots()
-    mat = ax.matshow(grid)
+    mat = ax.imshow(grid, interpolation='nearest')
     ani = animation.FuncAnimation(fig, update,
-                                  fargs=(mat, grid, N), 
+                                  fargs=(mat, grid, N, ), 
                                   frames=10,
                                   interval=50,
                                   save_count=50)
