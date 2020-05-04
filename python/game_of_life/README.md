@@ -4,6 +4,8 @@ Implementation of the [John Conway's](https://es.wikipedia.org/wiki/John_Horton_
 
 The solution is in Jupyter Notebook (not Jupyter Lab for now) format and Python program.
 
+![](./images/glider.gif)
+
 ## Dependences
 
 ```bash
