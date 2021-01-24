@@ -1,4 +1,5 @@
 import json
+
 DATA = {
     "tag": "ul",
     "children": [
@@ -16,31 +17,24 @@ DATA = {
 IND = 4
 
 
-
 def json_tree_to_html(data, ind):
 
     raw = json.loads(data)
-    current_indentation = 0
+    parent_tag = None
+    cur_ind = ind * ' '
+
     for k, v in raw.items():
         if k == "tag":
-            print(f"<{data[k]}>")
+            parent_tag = raw[k]
+            print(f"<{raw[k]}>")
+            continue
         elif k == "children":
-            current_indentation += ind
-            print(f"\n\n{type(v)}\n\n")
             for node in v:
-                print(f"{node}")
-            print(f"")
-        elif k == "text":
-            pass
+                print(f"{cur_ind}<{node['tag']}>")
+                print(f"{2*cur_ind}{node['text']}")
+                print(f"{cur_ind}</{node['tag']}>")
+            print(f"</{parent_tag}>")
 
-    #  for k, v in raw.items():
-        #  if type(v) == list:
-            #  for children in v:
-                #  for sub_tag, sub_val in children.items():
-                    #  print(f"{ind*' '}<{sub_val}>\n")
-                    #  print(f"{2*ind*' '}{sub_val}")
-        print(f"<{v}>")
-        
 
 if __name__ == "__main__":
     json_tree_to_html(json.dumps(DATA), IND)
