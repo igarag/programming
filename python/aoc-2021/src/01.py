@@ -14,14 +14,14 @@ def compute_depth(data: list) -> None:
         prev = measure
     print(f"Total increased measures: {counter}")
 
-def get_all_ints(text):
-    return [int(x) for x in re.findall(r'-?\d+', text)]
-
 def main():
-    with open("01.txt") as f:
-        lines = get_all_ints(f.read())
 
-    compute_depth(lines)
+    data = list()
+    with open("01.txt") as file:
+        for item in file:
+            data.append(int(item.strip("\n")))
+
+    compute_depth(data)
   
 if __name__ == "__main__":
     main()
