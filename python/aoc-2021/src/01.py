@@ -1,7 +1,6 @@
 """
 Exercise 1: Sonar Sweep
 """
-import re
 
 def compute_depth(data: list) -> None:
     counter: int = 0
@@ -22,6 +21,8 @@ def main():
             data.append(int(item.strip("\n")))
 
     compute_depth(data)
-  
+
+
 if __name__ == "__main__":
     main()
+
